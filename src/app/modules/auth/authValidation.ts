@@ -50,7 +50,7 @@ const registerTutorValidationSchema = z.object({
         time: z.string().min(1, 'Time is required'),
       }),
     ),
-    ratings: z.array(z.number().min(1).max(5)),
+    ratings: z.array(z.number().min(1).max(5)).optional(),
   }),
 });
 //Validation for tutor
