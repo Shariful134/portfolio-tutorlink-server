@@ -113,6 +113,7 @@ const updateBooking = catchAsync(async (req, res) => {
   });
 });
 
+//delete booking
 const deleteBooking = catchAsync(async (req, res) => {
   const { id } = req.params;
   const result = await bookingServices.deleteBookingIntoDB(id);
@@ -124,7 +125,20 @@ const deleteBooking = catchAsync(async (req, res) => {
   });
 });
 
+//delete user
+const deleteUser = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await bookingServices.deleteUserIntoDB(id);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: ' User Deleted Successfully',
+    data: result,
+  });
+});
+
 export const bookingControllers = {
+  deleteUser,
   createBooking,
   createBookingRequest,
   acceptBookingRequest,

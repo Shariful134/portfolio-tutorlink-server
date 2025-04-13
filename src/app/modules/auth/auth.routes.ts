@@ -18,11 +18,12 @@ router.post(
 //change Profile Image
 router.patch(
   '/changeProfileImg/:id',
-  upload.single('file'),
   auth(USER_ROLE.student, USER_ROLE.tutor),
+  validateRequest(authValidation.ImageValidationschema),
   authControllers.changeProfileImg,
 );
 
+//ragister as a tutor
 router.post(
   '/register-as-tutor',
   validateRequest(authValidation.registerTutorValidationSchema),
@@ -32,11 +33,6 @@ router.post(
 //update tutor data
 router.patch(
   '/update-as-tutor/:id',
-  upload.single('file'),
-  (req: Request, res: Response, next: NextFunction) => {
-    req.body = JSON.parse(req.body.data);
-    next();
-  },
   auth(USER_ROLE.tutor),
   validateRequest(authValidation.updateTutorValidationSchema),
   authControllers.updateTutor,

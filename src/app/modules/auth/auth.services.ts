@@ -27,7 +27,11 @@ const registerStudentIntoDB = async (payload: TStudent) => {
   return result;
 };
 // change Profile img
-const changeProfileImgIntoDB = async (file: any, id: string, email: string) => {
+const changeProfileImgIntoDB = async (
+  payload: Record<string, string>,
+  id: string,
+  email: string,
+) => {
   const user = await User.findOne({ email });
   const findUser = await User.findById(id);
 
@@ -41,15 +45,8 @@ const changeProfileImgIntoDB = async (file: any, id: string, email: string) => {
   if (user?.role !== findUser?.role) {
     throw new AppError(StatusCodes.UNAUTHORIZED, 'You are not Authorized!');
   }
-  const imageName = user?.name;
-  let imageLink;
-  if (file) {
-    imageLink = await sendImageToCloudinary(imageName, file?.path);
-  }
 
-  const profileImg = { profileImage: imageLink?.secure_url };
-
-  const result = await User.findByIdAndUpdate(id, profileImg, {
+  const result = await User.findByIdAndUpdate(id, payload, {
     new: true,
   });
   if (!result) {
@@ -75,7 +72,7 @@ const registerasTutorIntoDB = async (payload: IUsers) => {
 
 // update as tutor
 const updateTutorIntoDB = async (
-  file: any,
+  // file: any,
   email: string,
   id: string,
   payload: Partial<IUsers>,
@@ -87,19 +84,7 @@ const updateTutorIntoDB = async (
     throw new AppError(StatusCodes.UNAUTHORIZED, 'Your are not Authorized!');
   }
 
-  const imageName = currenUser?.name;
-  let imageLink;
-  if (file) {
-    imageLink = await sendImageToCloudinary(imageName, file?.path);
-  }
-
-  const profileImage = imageLink?.secure_url;
-
-  const payloads = { ...payload, profileImage };
-
-  console.log(profileImage);
-  console.log(payloads);
-  const result = await User.findByIdAndUpdate({ _id: id }, payloads, {
+  const result = await User.findByIdAndUpdate({ _id: id }, payload, {
     new: true,
   });
   return result;

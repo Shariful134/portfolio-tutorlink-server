@@ -94,10 +94,23 @@ const loginValidationschema = z.object({
     password: z.string({ required_error: 'Password is required' }),
   }),
 });
+const ImageValidationschema = z.object({
+  body: z.object({
+    email: z.string({ required_error: 'Password is required' }),
+    bio: z.string().optional(),
+    phoneNumber: z
+      .string()
+      .regex(phoneNumberRegex, 'Invalid phone number')
+      .optional(),
+
+    profileImage: z.string().optional(),
+  }),
+});
 
 export const authValidation = {
   registerTutorValidationSchema,
   registerStudentValidationSchema,
   loginValidationschema,
   updateTutorValidationSchema,
+  ImageValidationschema,
 };

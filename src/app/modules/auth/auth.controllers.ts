@@ -19,10 +19,14 @@ const registerStudent = catchAsync(async (req, res) => {
 
 //changeProfile Img
 const changeProfileImg = catchAsync(async (req, res) => {
-  const file = req?.file;
   const { id } = req.params;
   const { userEmail } = req.user;
-  const result = await authServices.changeProfileImgIntoDB(file, id, userEmail);
+  console.log('body: ', req.body);
+  const result = await authServices.changeProfileImgIntoDB(
+    req.body,
+    id,
+    userEmail,
+  );
   sendResponse(res, {
     statusCode: StatusCodes.OK,
     success: true,
@@ -44,11 +48,10 @@ const registerasTutor = catchAsync(async (req, res) => {
 
 //update as a tutor
 const updateTutor = catchAsync(async (req, res) => {
-  const file = req?.file;
   const { userEmail } = req?.user;
   const { id } = req?.params;
   const result = await authServices.updateTutorIntoDB(
-    file,
+    // file,
     userEmail,
     id,
     req.body,

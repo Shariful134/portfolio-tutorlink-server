@@ -204,12 +204,20 @@ const updateBookingIntoDB = async (
   return result;
 };
 
+//delete booking
 const deleteBookingIntoDB = async (id: string) => {
   const result = await Booking.findByIdAndDelete(id);
   return result;
 };
 
+//delete users
+const deleteUserIntoDB = async (id: string) => {
+  const result = await User.findByIdAndDelete(id);
+  return result;
+};
+
 export const bookingServices = {
+  deleteUserIntoDB,
   createBookingRequestIntoDB,
   acceptBookingRequestIntoDB,
   createBookingIntoDB,

@@ -7,6 +7,7 @@ import auth from '../../middlewares/auth';
 import { USER_ROLE } from '../auth/auth.constant';
 
 const router = Router();
+
 //get all Users
 router.get('/', userControllers.getAllUser);
 

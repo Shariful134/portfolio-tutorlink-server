@@ -58,10 +58,18 @@ router.patch(
   validateRequest(bookingValidation.bookingUpadateValidationSchema),
   bookingControllers.updateBooking,
 );
+
+//delete booking
 router.delete(
   '/delete-booking/:id',
   auth(USER_ROLE.student, USER_ROLE.tutor),
   bookingControllers.deleteBooking,
+);
+
+router.delete(
+  '/delete-user/:id',
+  // auth(USER_ROLE.student, USER_ROLE.tutor),
+  bookingControllers.deleteUser,
 );
 
 export const bookingRoutes = router;
