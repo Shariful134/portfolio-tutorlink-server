@@ -84,7 +84,6 @@ const updateTutorValidationSchema = z.object({
         }),
       )
       .optional(),
-
     ratings: z.array(z.number().min(1).max(5)).optional(),
   }),
 });

@@ -62,6 +62,12 @@ const changeProfileImgIntoDB = async (file: any, id: string, email: string) => {
 // register as tutor
 const registerasTutorIntoDB = async (payload: IUsers) => {
   const role = 'tutor';
+  const user = await User.isUserExistsByEmail(payload.email);
+
+  //checking user is exists
+  if (user) {
+    throw new AppError(StatusCodes.BAD_REQUEST, 'Email already registered!');
+  }
   const tutorData = { ...payload, role };
   const result = await User.create(tutorData);
   return result;
