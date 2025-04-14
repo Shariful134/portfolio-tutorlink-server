@@ -14,7 +14,7 @@ app.use(cookiePerser());
 app.use(
   cors({
     // origin: [' http://localhost:3000'],
-    origin: ['https://portfolio-tutor-client.vercel.app/'],
+    origin: ['https://tutorlink-client-side.vercel.app/'],
     credentials: true,
   }),
 );
