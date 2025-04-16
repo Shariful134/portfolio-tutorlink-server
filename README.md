@@ -1,4 +1,9 @@
 # Getting Started
 # tutorLink-server-side
-"# tutor-server" 
+1.All Dependencies Install:
+```bash
+npm install
+```
+2.Set up environment variables in your .en file:
+
 "# portfolio-tutorlink-server" 
