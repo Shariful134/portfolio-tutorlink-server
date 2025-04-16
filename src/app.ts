@@ -19,7 +19,7 @@ app.use(
   }),
 );
 
-//application routes
+//application routes here
 app.use('/api/v1/', router);
 
 app.get('/', (req: Request, res: Response) => {
