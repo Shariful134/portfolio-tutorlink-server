@@ -11,7 +11,7 @@
 - **Cloudinary**
 - **dotenv**, **CORS**, **Zod**
 - **JSON Web Token (JWT)**
-- **bcrypt**
+- **bycrypt**
 - **ESLint**
 
 ## Payment Integration
