@@ -1,17 +1,18 @@
 # Getting Started
 # tutorLink-server-side
-## Technology Used In this Project
-1.node js
-2.express js
-3.typescript
-4.mongodb
-5.mongoose
-6.multer
-7.cloudinary
-8.dotenv, cors, zod
-9.jsonWebtoken
-10.bycrypt
-11.eslint
+## 🛠️ Technologies Used
+
+- **Node.js**
+- **Express.js**
+- **TypeScript**
+- **MongoDB**
+- **Mongoose**
+- **Multer**
+- **Cloudinary**
+- **dotenv**, **CORS**, **Zod**
+- **JSON Web Token (JWT)**
+- **bcrypt**
+- **ESLint**
 
 ## Payment Integration
 1.shurjapay
